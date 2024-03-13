@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('activos', function (Blueprint $table) {
             $table->id();
             $table->date("fechaDeCompra");
-            $table->date("idContabilidad");
+            $table->string("idContabilidad");
             $table->enum("estadoActivo", ['Disponible', 'Asignado', 'Reparacion', 'Descartado'])->default('Disponible');
             $table->boolean("estado");
             $table->unsignedBigInteger('cliente_id');

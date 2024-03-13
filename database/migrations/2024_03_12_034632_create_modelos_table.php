@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string("nombreModelo");
             $table->boolean("estadoModelo");
-            $table->unsignedBigInteger('marca_categoria_id');
-            $table->foreign(['marca_categoria_id'])->references(['id'])->on('marca_categorias')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->unsignedBigInteger('marca_id');
+            $table->foreign(['marca_id'])->references(['id'])->on('marcas')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign(['categoria_id'])->references(['id'])->on('categorias')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->timestamps();
         });
     }
