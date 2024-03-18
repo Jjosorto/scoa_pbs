@@ -18,6 +18,15 @@
                     <x-nav-link style="text-decoration: none" :href="route('clientes.index')" :active="request()->routeIs('clientes.*')">
                         Clientes
                     </x-nav-link>
+                    <x-nav-link style="text-decoration: none" :href="route('departamentos.index')" :active="request()->routeIs('departamentos.*')">
+                        Departamentos
+                    </x-nav-link>
+                    <x-nav-link style="text-decoration: none" :href="route('categorias.index')" :active="request()->routeIs('categorias.*')">
+                        Categorias
+                    </x-nav-link>
+                    <x-nav-link style="text-decoration: none" :href="route('marcas.index')" :active="request()->routeIs('marcas.*')">
+                        Marcas
+                    </x-nav-link>
                 </div>
             </div>
 

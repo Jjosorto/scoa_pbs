@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Rutas para clientes
 Route::group(['prefix' => 'clientes'], function () {
     Route::controller(ClientesController::class)->group(function () {
         Route::get('/', 'index')->middleware(['auth'])->name('clientes.index');
@@ -40,6 +44,48 @@ Route::group(['prefix' => 'clientes'], function () {
         Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('clientes.desactive');
         // Route::get('/import', 'import')->middleware(['auth'])->name('clientes.import');
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('clientes.import.post');
+    });
+});
+//Rutas para departamentos
+Route::group(['prefix' => 'departamentos'], function () {
+    Route::controller(DepartamentosController::class)->group(function () {
+        Route::get('/', 'index')->middleware(['auth'])->name('departamentos.index');
+        Route::get('/create', 'create')->middleware(['auth'])->name('departamentos.create');
+        Route::get('/edit/{id}', 'edit')->middleware(['auth'])->name('departamentos.edit');
+        Route::post('/store', 'store')->middleware(['auth'])->name('departamentos.store');
+        Route::post('/update/{id}', 'update')->middleware(['auth'])->name('departamentos.update');
+        // Route::get('/destoy/{id}', 'destroy')->middleware(['auth'])->name('departamentos.destroy');
+        Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('departamentos.desactive');
+        // Route::get('/import', 'import')->middleware(['auth'])->name('departamentos.import');
+        // Route::post('/import', 'importPost')->middleware(['auth'])->name('departamentos.import.post');
+    });
+});
+    //Rutas para categorias
+Route::group(['prefix' => 'categorias'], function () {
+    Route::controller(CategoriasController::class)->group(function () {
+        Route::get('/', 'index')->middleware(['auth'])->name('categorias.index');
+        Route::get('/create', 'create')->middleware(['auth'])->name('categorias.create');
+        Route::get('/edit/{id}', 'edit')->middleware(['auth'])->name('categorias.edit');
+        Route::post('/store', 'store')->middleware(['auth'])->name('categorias.store');
+        Route::post('/update/{id}', 'update')->middleware(['auth'])->name('categorias.update');
+        // Route::get('/destoy/{id}', 'destroy')->middleware(['auth'])->name('categorias.destroy');
+        Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('categorias.desactive');
+        // Route::get('/import', 'import')->middleware(['auth'])->name('categorias.import');
+        // Route::post('/import', 'importPost')->middleware(['auth'])->name('categorias.import.post');
+    });
+});
+   //Rutas para marcas
+   Route::group(['prefix' => 'marcas'], function () {
+    Route::controller(MarcasController::class)->group(function () {
+        Route::get('/', 'index')->middleware(['auth'])->name('marcas.index');
+        Route::get('/create', 'create')->middleware(['auth'])->name('marcas.create');
+        Route::get('/edit/{id}', 'edit')->middleware(['auth'])->name('marcas.edit');
+        Route::post('/store', 'store')->middleware(['auth'])->name('marcas.store');
+        Route::post('/update/{id}', 'update')->middleware(['auth'])->name('marcas.update');
+        // Route::get('/destoy/{id}', 'destroy')->middleware(['auth'])->name('marcas.destroy');
+        Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('marcas.desactive');
+        // Route::get('/import', 'import')->middleware(['auth'])->name('marcas.import');
+        // Route::post('/import', 'importPost')->middleware(['auth'])->name('marcas.import.post');
     });
 });
 

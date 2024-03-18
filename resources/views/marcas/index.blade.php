@@ -4,40 +4,34 @@
         <div class="container py-5 px-5 ">
             <div class="row">
                 <div class="col-12 mb-5" style="text-align: end">
-                    <a href="{{ route('clientes.create') }}">
+                    <a href="{{ route('marcas.create') }}">
                         <button class="btn btn-dark"><i class="fa-regular fa-square-plus" style="color: #ffffff;"></i>
-                            Nuevo
-                            cliente</button></a>
-                </div>
+                            Nuevo marca
+                        </button>
+                    </a>
+                </div>  
             </div>
             <table id="table" class="display">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Direccion</th>
-                        <th>Telefono</th>
+                        <th>Nombre de Marca</th>
                         <th>Estado</th>
                         <th style="text-align: end">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($clientes as $cliente)
+                    @foreach ($marcas as $marca)
                     <tr>
-                        <td>{{ $cliente->nombre }}</td>
-                        <td>{{ $cliente->direccion }}</td>
-                        <td>{{ $cliente->telefono }}</td>
-                        <td>{{ $cliente->correo }}</td>
-                        <td>
-                            @if($cliente->estado == 0)
-                            Inactiva
+                        <td>{{ $marca->nombreMarca }}</td>
+                        <td>@if($marca->estadoMarca == 0)
+                            Inactivo
                             @else
-                            Activa
+                            Activo
                             @endif
                         </td>
                         <td style="text-align: end">
-                            <a href="{{ route('clientes.edit', $cliente->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></a>
-                            <button class="btn btn-secondary btn-desactivar" data-id="{{ $cliente->id }}"><i class="fas fa-ban" style="color: #ffffff;"></i></button>
+                            <a href="{{ route('marcas.edit', $marca->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></a>
+                            <button class="btn btn-secondary btn-desactivar" data-id="{{ $marca->id }}"><i class="fas fa-ban" style="color: #ffffff;"></i></button>
                         </td>
                     </tr>
                     @endforeach
@@ -55,7 +49,7 @@
                 var id = $(this).data('id');
                 console.log('entró')
                 Swal.fire({
-                    title: "Desactivar cliente",
+                    title: "Desactivar Marca",
                     text: "¿Desea continuar?",
                     icon: 'warning',
                     showCancelButton: true,
@@ -72,7 +66,7 @@
                     buttonsStyling: false
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        var url = "{{ route('clientes.desactive', ':id') }}";
+                        var url = "{{ route('marcas.desactive', ':id') }}";
                         url = url.replace(':id', id);
 
                         $.ajax({
@@ -86,7 +80,7 @@
                                 ).then((result) => {
                                     if (result.isConfirmed) {
                                         window.location.href =
-                                            "{{ route('clientes.index') }}";
+                                            "{{ route('marcas.index') }}";
                                     }
                                 });
 
@@ -101,7 +95,7 @@
                                 ).then((result) => {
                                     if (result.isConfirmed) {
                                         window.location.href =
-                                            "{{ route('clientes.index') }}";
+                                            "{{ route('marcas.index') }}";
                                     }
                                 });
                             }
