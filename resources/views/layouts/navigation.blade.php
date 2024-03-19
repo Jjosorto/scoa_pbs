@@ -27,6 +27,9 @@
                     <x-nav-link style="text-decoration: none" :href="route('marcas.index')" :active="request()->routeIs('marcas.*')">
                         Marcas
                     </x-nav-link>
+                    <x-nav-link style="text-decoration: none" :href="route('modelos.index')" :active="request()->routeIs('modelos.*')">
+                        Modelos
+                    </x-nav-link>
                 </div>
             </div>
 

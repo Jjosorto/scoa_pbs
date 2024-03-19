@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\DepartamentosController;
 use App\Http\Controllers\MarcasController;
+use App\Http\Controllers\ModelosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,6 +87,21 @@ Route::group(['prefix' => 'categorias'], function () {
         Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('marcas.desactive');
         // Route::get('/import', 'import')->middleware(['auth'])->name('marcas.import');
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('marcas.import.post');
+    });
+});
+
+    //Rutas modelos
+   Route::group(['prefix' => 'modelos'], function () {
+    Route::controller(ModelosController::class)->group(function () {
+        Route::get('/', 'index')->middleware(['auth'])->name('modelos.index');
+        Route::get('/create', 'create')->middleware(['auth'])->name('modelos.create');
+        Route::get('/edit/{id}', 'edit')->middleware(['auth'])->name('modelos.edit');
+        Route::post('/store', 'store')->middleware(['auth'])->name('modelos.store');
+        Route::post('/update/{id}', 'update')->middleware(['auth'])->name('modelos.update');
+        // Route::get('/destoy/{id}', 'destroy')->middleware(['auth'])->name('modelos.destroy');
+        Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('modelos.desactive');
+        // Route::get('/import', 'import')->middleware(['auth'])->name('modelos.import');
+        // Route::post('/import', 'importPost')->middleware(['auth'])->name('modelos.import.post');
     });
 });
 
