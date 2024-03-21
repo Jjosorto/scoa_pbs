@@ -15,4 +15,7 @@ class Modelo extends Model
     public function categoria(): BelongsTo{
         return $this->belongsTo(Categoria::class,'categoria_id');
     }
+    public function producto(): BelongsTo{
+        return $this->belongsTo(Producto::class,'producto_id');
+    }
 }

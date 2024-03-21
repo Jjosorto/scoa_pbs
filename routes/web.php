@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\DepartamentosController;
 use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\ModelosController;
+use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,7 @@ Route::group(['prefix' => 'clientes'], function () {
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('clientes.import.post');
     });
 });
+
 //Rutas para departamentos
 Route::group(['prefix' => 'departamentos'], function () {
     Route::controller(DepartamentosController::class)->group(function () {
@@ -103,6 +105,23 @@ Route::group(['prefix' => 'categorias'], function () {
         // Route::get('/import', 'import')->middleware(['auth'])->name('modelos.import');
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('modelos.import.post');
     });
+});
+    //Rutas modelos
+   Route::group(['prefix' => 'productos'], function () {
+    Route::controller(ProductosController::class)->group(function () {
+        Route::get('/', 'index')->middleware(['auth'])->name('productos.index');
+        Route::get('/create', 'create')->middleware(['auth'])->name('productos.create');
+        Route::get('/edit/{id}', 'edit')->middleware(['auth'])->name('productos.edit');
+        Route::post('/store', 'store')->middleware(['auth'])->name('productos.store');
+        Route::post('/update/{id}', 'update')->middleware(['auth'])->name('productos.update');
+        // Route::get('/destoy/{id}', 'destroy')->middleware(['auth'])->name('productos.destroy');
+        Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('productos.desactive');
+        // Route::get('/import', 'import')->middleware(['auth'])->name('productos.import');
+        // Route::post('/import', 'importPost')->middleware(['auth'])->name('productos.import.post');
+    });
+    
+
+    
 });
 
 require __DIR__.'/auth.php';

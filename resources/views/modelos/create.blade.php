@@ -10,7 +10,7 @@
                     </div>
                     <div class="form-group my-4">
                         <label for="id_marca">Marcas:</label>
-                        <select class="form-control" name="id_marca" id="id_marca">
+                        <select class="form-control marcas" name="id_marca" id="id_marca">
                             @foreach ($marcas as $marca)
                             <option value="{{ $marca->id }}">{{ $marca->nombreMarca }}</option>
                             @endforeach
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group my-4">
                         <label for="id_categoria">Categorias:</label>
-                        <select class="form-control" name="id_categoria" id="id_categoria">
+                        <select class="form-control categorias" name="id_categoria" id="id_categoria">
                             @foreach ($categorias as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->nombreCategoria }}</option>
                             @endforeach
@@ -34,6 +34,8 @@
  <!-----------Script/---------------->
     <script>
         $(document).ready(function() {
+            $('.marcas').select2();
+            $('.categorias').select2();
             $('#crearModelos').submit(function(e) {
                 e.preventDefault();
 
