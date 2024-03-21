@@ -6,7 +6,7 @@
                 <div class="col-12 mb-5" style="text-align: end">
                     <a href="{{ route('productos.create') }}">
                         <button class="btn btn-dark"><i class="fa-regular fa-square-plus" style="color: #ffffff;"></i>
-                            Nuevo producto
+                            Nuevo producto 
                         </button>
                     </a>
                 </div>  
