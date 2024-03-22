@@ -6,6 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>SCOA-PBS</title>
+         <!-- Favicon -->
+        <link rel="icon" href="{{ asset('Assetss/img/logo.png') }}" type="image/x-icon">
  <!-- Scripts -->
  @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Fonts -->
