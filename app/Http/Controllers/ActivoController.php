@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Activo;
 use App\Models\Categoria;
+use App\Models\Cliente;
+use App\Models\Departamento;
 use App\Models\Marca;
 use App\Models\Modelo;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class ActivoController extends Controller
@@ -42,9 +45,10 @@ class ActivoController extends Controller
 
     public function create(){
         try{
-            $categorias = Categoria::where("estadoCategoria",1)->get();
-            $marcas = Marca::where("estadoMarca",1)->get();
-            return view("modelos.create", compact("categorias","marcas"));
+            $clientes = Cliente::where("estado",1)->get();
+            $departamentos = Departamento::where("estado",1)->get();
+            $productos = Producto::where("estadoProductos",1)->get();
+            return view("activos.create", compact("clientes","departamentos","productos"));
         }
         catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
@@ -72,8 +76,9 @@ class ActivoController extends Controller
         try{
             $modelo = Modelo::find($id);
             $categorias = Categoria::where("estadoCategoria",1)->get();
-            $marcas = Marca::where("estadoMarca",1)->get();
-            return view("modelos.edit",compact("modelo","categorias","marcas"));
+            $departamentos = Departamento::where("estadoDepartamento",1)->get();
+            $productos = Producto::where("estadoProductos",1)->get();
+            return view("modelos.edit",compact("modelo","categorias","departamentos"));
         }
         catch(\Throwable $th){
             return response()->json(["error"=>$th ->getMessage()],500);
