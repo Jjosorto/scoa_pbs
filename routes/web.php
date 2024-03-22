@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivoController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\DepartamentosController;
@@ -63,7 +64,7 @@ Route::group(['prefix' => 'departamentos'], function () {
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('departamentos.import.post');
     });
 });
-    //Rutas para categorias
+//Rutas para categorias
 Route::group(['prefix' => 'categorias'], function () {
     Route::controller(CategoriasController::class)->group(function () {
         Route::get('/', 'index')->middleware(['auth'])->name('categorias.index');
@@ -77,8 +78,8 @@ Route::group(['prefix' => 'categorias'], function () {
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('categorias.import.post');
     });
 });
-   //Rutas para marcas
-   Route::group(['prefix' => 'marcas'], function () {
+//Rutas para marcas
+Route::group(['prefix' => 'marcas'], function () {
     Route::controller(MarcasController::class)->group(function () {
         Route::get('/', 'index')->middleware(['auth'])->name('marcas.index');
         Route::get('/create', 'create')->middleware(['auth'])->name('marcas.create');
@@ -92,8 +93,8 @@ Route::group(['prefix' => 'categorias'], function () {
     });
 });
 
-    //Rutas modelos
-   Route::group(['prefix' => 'modelos'], function () {
+//Rutas modelos
+Route::group(['prefix' => 'modelos'], function () {
     Route::controller(ModelosController::class)->group(function () {
         Route::get('/', 'index')->middleware(['auth'])->name('modelos.index');
         Route::get('/create', 'create')->middleware(['auth'])->name('modelos.create');
@@ -106,8 +107,8 @@ Route::group(['prefix' => 'categorias'], function () {
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('modelos.import.post');
     });
 });
-    //Rutas modelos
-   Route::group(['prefix' => 'productos'], function () {
+//Rutas procutos
+Route::group(['prefix' => 'productos'], function () {
     Route::controller(ProductosController::class)->group(function () {
         Route::get('/', 'index')->middleware(['auth'])->name('productos.index');
         Route::get('/create', 'create')->middleware(['auth'])->name('productos.create');
@@ -119,9 +120,22 @@ Route::group(['prefix' => 'categorias'], function () {
         // Route::get('/import', 'import')->middleware(['auth'])->name('productos.import');
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('productos.import.post');
     });
-    
-
-    
 });
 
-require __DIR__.'/auth.php';
+//Rutas activos
+Route::group(['prefix' => 'activos'], function () {
+    Route::controller(ActivoController::class)->group(function () {
+        Route::get('/', 'index')->middleware(['auth'])->name('activos.index');
+        Route::get('/create', 'create')->middleware(['auth'])->name('activos.create');
+        Route::get('/edit/{id}', 'edit')->middleware(['auth'])->name('activos.edit');
+        Route::post('/store', 'store')->middleware(['auth'])->name('activos.store');
+        Route::post('/update/{id}', 'update')->middleware(['auth'])->name('activos.update');
+        Route::get('/getfecha', 'activosByFecha')->middleware(['auth'])->name('activos.byfecha');
+        // Route::get('/destoy/{id}', 'destroy')->middleware(['auth'])->name('activos.destroy');
+        Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('activos.desactive');
+        // Route::get('/import', 'import')->middleware(['auth'])->name('activos.import');
+        // Route::post('/import', 'importPost')->middleware(['auth'])->name('activos.import.post');
+    });
+});
+
+require __DIR__ . '/auth.php';

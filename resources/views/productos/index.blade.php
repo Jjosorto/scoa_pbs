@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="container my-5 bg-dark shadow p-3 mb-5 bg-body-tertiary rounded" style="border-radius: 15px; height: 100%">
+<div class="row justify-content-center">
 
-        <div class="container py-5 px-5 ">
+<div class="col-md-10 bg-white my-4 py-4 shadow p-3 mb-5 bg-body-tertiary rounded">
             <div class="row">
                 <div class="col-12 mb-5" style="text-align: end">
                     <a href="{{ route('productos.create') }}">

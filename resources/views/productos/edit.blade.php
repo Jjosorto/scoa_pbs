@@ -16,11 +16,11 @@
                         </div>
                         <div class="form-group col-4">
                             <label for="ram">Ram:</label>
-                            <input value="{{$producto->ram}}" type="text" class="form-control" id="ram" name="ram" required>
+                            <input value="{{$producto->ram}}" type="text" class="form-control" id="ram" name="ram" >
                         </div>
                         <div class="form-group col-4">
                             <label for="procesador">Procesador:</label>
-                            <input value="{{$producto->procesador}}" type="text" class="form-control" id="procesador" name="procesador" required>
+                            <input value="{{$producto->procesador}}" type="text" class="form-control" id="procesador" name="procesador" >
                         </div>
                     </div>
                     <div class="col-12 row">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group col-6">
                             <label for="capacidadDisco">Capacidad Disco:</label>
-                            <input value="{{$producto->capacidadDisco}}" type="text" class="form-control" id="capacidadDisco" name="capacidadDisco" required>
+                            <input value="{{$producto->capacidadDisco}}" type="text" class="form-control" id="capacidadDisco" name="capacidadDisco" >
                         </div>
                     </div>
                     <div class="form-group">

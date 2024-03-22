@@ -16,11 +16,11 @@
                         </div>
                         <div class="form-group col-4">
                             <label for="ram">Ram:</label>
-                            <input type="text" class="form-control" id="ram" name="ram" required>
+                            <input type="text" class="form-control" id="ram" name="ram" >
                         </div>
                         <div class="form-group col-4">
                             <label for="procesador">Procesador:</label>
-                            <input type="text" class="form-control" id="procesador" name="procesador" required>
+                            <input type="text" class="form-control" id="procesador" name="procesador" >
                         </div>
                     </div>
                     <div class="col-12 row">
@@ -28,6 +28,7 @@
                         <div class="form-group col-6">
                             <label for="id_marca">Tipo de disco:</label>
                             <select class="form-control disco" name="tipoDisco" id="tipoDisco">
+                                <option value="null">Ninguno</option>
                                 <option value="HDD">HDD</option>
                                 <option value="SSD">SSD</option>
                                 <option value="NVMe">NVMe</option>
@@ -36,7 +37,7 @@
                         </div>
                         <div class="form-group col-6">
                             <label for="capacidadDisco">Capacidad Disco:</label>
-                            <input type="text" class="form-control" id="capacidadDisco" name="capacidadDisco" required>
+                            <input type="text" class="form-control" id="capacidadDisco" name="capacidadDisco" >
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,7 +54,7 @@
                     </div>
                     <div class="form-group py-3 col-md-6">
                         <label for="imagen_producto">Seleccionar imagen Producto:</label>
-                        <input type="file" accept="image/*" onchange="mostrarImagenProducto(this)" style="display: none;" id="imagen_producto" name="imagen_producto">
+                        <input type="file" accept="image/*" onchange="mostrarImagenProducto(this)" style="display: none;" id="imagen_producto" name="imagen_producto" >
                         <label for="imagen_producto" style="cursor: pointer;">
                             <img src="#" id="imagenProducto" style="max-width: 200px; max-height: 200px; border: 1px solid #ddd; display: block;" alt="Imagen Producto">
                         </label>

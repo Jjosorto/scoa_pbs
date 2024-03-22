@@ -37,10 +37,6 @@ class ProductosController extends Controller
             $request->validate([
                 'nombreProducto' => 'required',
                 'serie' => 'required',
-                'ram' => 'required',
-                'procesador' => 'required',
-                'tipoDisco' => 'required',
-                'capacidadDisco' => 'required',
                 'descripcion' => 'required',
                 'id_modelo' => 'required',
             ]);
@@ -86,10 +82,6 @@ class ProductosController extends Controller
             $request->validate([
                 'nombreProducto' => 'required',
                 'serie' => 'required',
-                'ram' => 'required',
-                'procesador' => 'required',
-                'tipoDisco' => 'required',
-                'capacidadDisco' => 'required',
                 'descripcion' => 'required',
                 'id_modelo' => 'required',
             ]);
