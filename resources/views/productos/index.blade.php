@@ -34,10 +34,10 @@
                     <tr>
                         <td>{{ $producto->nombre }}</td>
                         <td>{{ $producto->serie }}</td>
-                        <td>{{ $producto->ram }}</td>
-                        <td>{{ $producto->procesador }}</td>
-                        <td>{{ $producto->tipoDisco }}</td>
-                        <td>{{ $producto->capacidadDisco }}</td>
+                        <td>{{ $producto->ram ? $producto->tipoDisco : "N/A" }}</td>
+                        <td>{{ $producto->procesador ? $producto->tipoDisco : "N/A"  }}</td>
+                        <td>{{ $producto->tipoDisco ? $producto->tipoDisco : "N/A" }}</td>
+                        <td>{{ $producto->capacidadDisco  ? $producto->tipoDisco : "N/A" }}</td>
                         <td>{{ $producto->descripcion }}</td>
                         <td>@if($producto->estadoProductos == 0)
                             Inactivo

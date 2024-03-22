@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("serie");
             $table->string("ram")->nullable();
             $table->string("procesador")->nullable();
-            $table->enum("tipoDisco", ['HDD', 'SSD', 'NVMe', 'M.2'])->default('HDD');
+            $table->enum("tipoDisco", ['HDD','SSD','NVMe','M.2'])->default(null)->nullable();
             $table->string("capacidadDisco")->nullable();
             $table->string("descripcion");
             $table->boolean("estadoProductos");

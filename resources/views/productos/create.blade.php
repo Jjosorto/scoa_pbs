@@ -28,7 +28,7 @@
                         <div class="form-group col-6">
                             <label for="id_marca">Tipo de disco:</label>
                             <select class="form-control disco" name="tipoDisco" id="tipoDisco">
-                                <option value="null">Ninguno</option>
+                                <option value="">Ninguno</option>
                                 <option value="HDD">HDD</option>
                                 <option value="SSD">SSD</option>
                                 <option value="NVMe">NVMe</option>
