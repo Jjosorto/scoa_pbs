@@ -9,7 +9,7 @@
                             Nuevo Modelo
                         </button>
                     </a>
-                </div>  
+                </div>
             </div>
             <table id="table" class="display">
                 <thead>
@@ -43,7 +43,7 @@
             </table>
         </div>
     </div>
- <!-----------Script/---------------->
+    <!-----------Script/---------------->
     <script>
         $(document).ready(function() {
 

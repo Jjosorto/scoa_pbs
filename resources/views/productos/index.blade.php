@@ -25,6 +25,7 @@
                         <th>Modelo</th>
                         <th>Marca</th>
                         <th>Categoria</th>
+                        <th>Imagen Producto</th>
                         <th style="text-align: end">Opciones</th>
                     </tr>
                 </thead>
@@ -47,8 +48,9 @@
                         <td>{{ $producto->modelos->nombreModelo }}</td>
                         <td>{{ $producto->modelos->marca->nombreMarca }}</td>
                         <td>{{ $producto->modelos->categoria->nombreCategoria }}</td>
+                        <td><img src="{{ 'storage/images/productos/' . $producto-> nombreImagen }}" alt="{{ $producto-> nombreImagen}}" class="img-fluid rounded" style="max-width: 100%; height: auto;""></td>
                         <td style="text-align: end">
-                            <a href="{{ route('modelos.edit', $producto->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></a>
+                            <a href="{{ route('productos.edit', $producto->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></a>
                             <button class="btn btn-secondary btn-desactivar" data-id="{{ $producto->id }}"><i class="fas fa-ban" style="color: #ffffff;"></i></button>
                         </td>
                     </tr>
@@ -67,7 +69,7 @@
                 var id = $(this).data('id');
                 console.log('entró')
                 Swal.fire({
-                    title: "Desactivar Modelo",
+                    title: "Desactivar producto",
                     text: "¿Desea continuar?",
                     icon: 'warning',
                     showCancelButton: true,
@@ -84,7 +86,7 @@
                     buttonsStyling: false
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        var url = "{{ route('modelos.desactive', ':id') }}";
+                        var url = "{{ route('productos.desactive', ':id') }}";
                         url = url.replace(':id', id);
 
                         $.ajax({
@@ -98,7 +100,7 @@
                                 ).then((result) => {
                                     if (result.isConfirmed) {
                                         window.location.href =
-                                            "{{ route('modelos.index') }}";
+                                            "{{ route('productos.index') }}";
                                     }
                                 });
 

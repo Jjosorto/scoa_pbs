@@ -51,6 +51,13 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group py-3 col-md-6">
+                        <label for="imagen_producto">Seleccionar imagen Producto:</label>
+                        <input type="file" accept="image/*" onchange="mostrarImagenProducto(this)" style="display: none;" id="imagen_producto" name="imagen_producto">
+                        <label for="imagen_producto" style="cursor: pointer;">
+                            <img src="#" id="imagenProducto" style="max-width: 200px; max-height: 200px; border: 1px solid #ddd; display: block;" alt="Imagen Producto">
+                        </label>
+                    </div>
                     <div class="form-group mt-3">
                         <button type="submit" class="btn btn-dark">Crear</button>
                     </div>
@@ -58,22 +65,35 @@
             </div>
         </div>
     </div>
- <!-----------Script/---------------->
+    <!-----------Script/---------------->
     <script>
+        function mostrarImagenProducto(input) {
+            if (input.files && input.files[0]) {
+                var lector = new FileReader();
+                lector.onload = function(e) {
+                    $('#imagenProducto').attr('src', e.target.result);
+                }
+                lector.readAsDataURL(input.files[0]);
+            }
+        }
+
+
         $(document).ready(function() {
-            $('.marcas').select2();
-            $('.categorias').select2();
+
+            
             $('#crearProducto').submit(function(e) {
                 e.preventDefault();
 
                 // Obtén los datos del formulario
-                var formData = $(this).serialize();
+                var formData = new FormData(this);
 
                 // Realiza la solicitud AJAX
                 $.ajax({
                     type: 'POST',
                     url: "{{ route('productos.store') }}", // validar de que la ruta sea correcta
                     data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         Swal.fire(
                             'Acción Exitosa',
@@ -81,7 +101,7 @@
                             'success'
                         ).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = "{{ route('modelos.index') }}";
+                                window.location.href = "{{ route('productos.index') }}";
                             }
                         });
 
