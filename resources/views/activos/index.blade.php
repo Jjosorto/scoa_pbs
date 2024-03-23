@@ -99,7 +99,7 @@
                 },
                 layout: {
                     topStart: {
-                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print', {
+                        buttons: ['excel', 'pdf', 'print', {
                             extend: 'searchBuilder',
                             config: {
                                 depthLimit: 2

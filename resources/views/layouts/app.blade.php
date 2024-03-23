@@ -36,29 +36,14 @@
     <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- Select2 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.0-release/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.0-release/chart.umd.min.js"></script>
 
 
 
 
-    <!-- script de tablas -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-
-
-    <!-- <link src="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css"> -->
-    <!-- <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script> -->
-
-    <script src="https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.js"></script>
-    <link src="https://cdn.datatables.net/buttons/3.0.1/css/buttons.dataTables.css">
-    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.dataTables.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.print.min.js"></script>
 
 
     <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.3/af-2.7.0/b-3.0.1/b-colvis-3.0.1/b-html5-3.0.1/b-print-3.0.1/cr-2.0.0/date-1.5.2/fc-5.0.0/fh-4.0.1/kt-2.12.0/r-3.0.0/rg-1.5.0/rr-1.5.0/sc-2.4.1/sb-1.7.0/sp-2.3.0/sl-2.0.0/sr-1.4.0/datatables.min.css" rel="stylesheet">

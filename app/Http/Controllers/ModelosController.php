@@ -42,7 +42,7 @@ class ModelosController extends Controller
             $modelos-> marca_id = $request->id_marca;
             $modelos-> categoria_id = $request -> id_categoria;
             $modelos-> save();
-            return response()->json(['message'=> 'creado correctamente'], 200);
+            // return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
         }

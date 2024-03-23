@@ -3,7 +3,7 @@
         <div class="col-md-6 bg-white my-4 py-4 shadow p-3 mb-5 bg-body-tertiary rounded">
             <h2>Crear Activo</h2>
             <div class="container mt-5">
-                <form id="crearProducto" method="post">
+                <form id="createActivo" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="fechaCompra">fecha de compra:</label>
@@ -100,7 +100,7 @@
             $('.cliente').select2();
             $('.departarmento').select2();
 
-            $('#crearProducto').submit(function(e) {
+            $('#createActivo').submit(function(e) {
                 e.preventDefault();
 
                 var formData = $(this).serialize();

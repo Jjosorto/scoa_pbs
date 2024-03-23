@@ -31,14 +31,17 @@
             </div>
         </div>
     </div>
- <!-----------Script/---------------->
+    <!-----------Script/---------------->
     <script>
         $(document).ready(function() {
+            
             $('.marcas').select2();
             $('.categorias').select2();
+
             $('#crearModelos').submit(function(e) {
                 e.preventDefault();
-
+                console.log("Entró al submit")
+                
                 // Obtén los datos del formulario
                 var formData = $(this).serialize();
 

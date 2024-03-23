@@ -75,7 +75,7 @@ class ActivoController extends Controller
             $activo-> producto_id = $request -> producto_id;
             $activo-> ciudad = $request -> ciudad;
             $activo-> save();
-            return response()->json(['message'=> 'creado correctamente'], 200);
+            // return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
         }
