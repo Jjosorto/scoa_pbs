@@ -14,9 +14,9 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Correo</th>
                         <th>Direccion</th>
                         <th>Telefono</th>
+                        <th>Correo</th>
                         <th>Estado</th>
                         <th style="text-align: end">Opciones</th>
                     </tr>
@@ -49,7 +49,23 @@
     <script>
         $(document).ready(function() {
 
-            let table = $('#table').DataTable();
+            new DataTable('#table', {
+                language: {
+                    searchBuilder: {
+                        condition: 'comparar',
+                    }
+                },
+                layout: {
+                    topStart: {
+                        buttons: ['excel', 'pdf', 'print', {
+                            extend: 'searchBuilder',
+                            config: {
+                                depthLimit: 2
+                            }
+                        }]
+                    }
+                }
+            });
 
             $('#table').on('click', '.btn-desactivar', function() {
                 var id = $(this).data('id');

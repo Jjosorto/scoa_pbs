@@ -63,7 +63,24 @@
     <script>
         $(document).ready(function() {
 
-            let table = $('#table').DataTable({scrollX :true});
+            new DataTable('#table', {
+                scrollX: true,
+                language: {
+                    searchBuilder: {
+                        condition: 'comparar',
+                    }
+                },
+                layout: {
+                    topStart: {
+                        buttons: ['excel', 'pdf', 'print', {
+                            extend: 'searchBuilder',
+                            config: {
+                                depthLimit: 2
+                            }
+                        }]
+                    }
+                }
+            });
 
             $('#table').on('click', '.btn-desactivar', function() {
                 var id = $(this).data('id');
