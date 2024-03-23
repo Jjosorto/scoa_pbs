@@ -57,17 +57,25 @@ class ActivoController extends Controller
     public function store(Request $request){
         try{
             $request ->validate([
-                'nombreModelo'=> 'required',
-                'id_marca'=> 'required',
-                'id_categoria'=> 'required',
+                'fechaCompra'=> 'required',
+                'idContabiliad'=> 'required',
+                'estadoActivo'=> 'required',
+                'ciudad'=> 'required',
+                'cliente_id'=> 'required',
+                'departamento_id'=> 'required',
+                'producto_id'=> 'required',
             ]);
-            $modelos = new Modelo();
-            $modelos -> nombreModelo = $request-> nombreModelo;
-            $modelos-> estadoModelo = 1;
-            $modelos-> marca_id = $request->id_marca;
-            $modelos-> categoria_id = $request -> id_categoria;
-            $modelos-> save();
-
+            $activo = new Activo();
+            $activo -> fechaDeCompra = $request-> fechaCompra;
+            $activo-> idContabilidad = $request-> idContabiliad;
+            $activo-> estadoActivo = $request->estadoActivo;
+            $activo-> estado = 1;
+            $activo-> cliente_id = $request -> cliente_id;
+            $activo-> departamento_id = $request -> departamento_id;
+            $activo-> producto_id = $request -> producto_id;
+            $activo-> ciudad = $request -> ciudad;
+            $activo-> save();
+            return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
         }

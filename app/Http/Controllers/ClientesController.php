@@ -36,7 +36,7 @@ class ClientesController extends Controller
             $cliente -> correo = $request-> correo;
             $cliente -> estado = 1;
             $cliente -> save();
-
+            return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
         }

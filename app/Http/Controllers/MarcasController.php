@@ -33,7 +33,7 @@ class MarcasController extends Controller
             $marcas -> nombreMarca = $request-> nombreMarca;
             $marcas-> estadoMarca = 1;
             $marcas-> save();
-
+            return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
         }

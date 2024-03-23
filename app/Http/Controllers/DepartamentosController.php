@@ -33,7 +33,7 @@ class DepartamentosController extends Controller
             $departamento -> nombreDepartamento = $request-> nombreDepartamento;
             $departamento-> estado = 1;
             $departamento-> save();
-
+            return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
         }

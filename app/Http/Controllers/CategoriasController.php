@@ -33,7 +33,7 @@ class CategoriasController extends Controller
             $categoria -> nombreCategoria = $request-> nombreCategoria;
             $categoria-> estadoCategoria = 1;
             $categoria-> save();
-
+            return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
             return response()->json(["error"=> $th->getMessage()],500);
         }

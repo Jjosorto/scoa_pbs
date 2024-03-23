@@ -60,6 +60,7 @@ class ProductosController extends Controller
             
             
             $producto->save();
+            return response()->json(['message'=> 'creado correctamente'], 200);
         } catch (\Throwable $th) {
             return response()->json(["error" => $th->getMessage()], 500);
         }

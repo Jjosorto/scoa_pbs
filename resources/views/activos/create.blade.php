@@ -1,6 +1,7 @@
 <x-app-layout>
     <div class="row justify-content-center ">
         <div class="col-md-6 bg-white my-4 py-4 shadow p-3 mb-5 bg-body-tertiary rounded">
+            <h2>Crear Activo</h2>
             <div class="container mt-5">
                 <form id="crearProducto" method="post">
                     @csrf
@@ -47,8 +48,8 @@
                         </div>
 
                         <div class="form-group my-4 col-4">
-                            <label for="departarmento_id">Departamento:</label>
-                            <select class="form-control departarmento" name="departarmento_id" id="departarmento_id">
+                            <label for="departamento_id">Departamento:</label>
+                            <select class="form-control departarmento" name="departamento_id" id="departamento_id">
                                 @foreach ($departamentos as $departamento)
                                 <option value="{{ $departamento->id }}">{{ $departamento->nombreDepartamento }}</option>
                                 @endforeach
@@ -74,10 +75,26 @@
     </div>
     <!-----------Script/---------------->
     <script>
-
-
-
         $(document).ready(function() {
+
+
+            function setTodayDate() {
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                let mm = today.getMonth() + 1; // January is 0!
+                let dd = today.getDate();
+
+                // String formatting for consistent output (YYYY-MM-DD)
+                mm = mm.toString().padStart(2, '0');
+                dd = dd.toString().padStart(2, '0');
+
+                const formattedDate = yyyy + '-' + mm + '-' + dd;
+
+                document.getElementById("fechaCompra").value = formattedDate;
+            }
+
+            setTodayDate();
+
 
             $('.producto').select2();
             $('.cliente').select2();
@@ -86,16 +103,12 @@
             $('#crearProducto').submit(function(e) {
                 e.preventDefault();
 
-                // Obtén los datos del formulario
-                var formData = new FormData(this);
+                var formData = $(this).serialize();
 
-                // Realiza la solicitud AJAX
                 $.ajax({
                     type: 'POST',
-                    url: "{{ route('activos.store') }}", // validar de que la ruta sea correcta
+                    url: "{{ route('activos.store') }}",
                     data: formData,
-                    processData: false,
-                    contentType: false,
                     success: function(response) {
                         Swal.fire(
                             'Acción Exitosa',
