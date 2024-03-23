@@ -12,8 +12,8 @@
                     <div class="row col-12 py-2">
 
                         <div class="form-group col-4">
-                            <label for="idContabiliad">Id Contambilidad:</label>
-                            <input type="text" class="form-control" id="idContabiliad" name="idContabiliad" required>
+                            <label for="idContabilidad">Id Contambilidad:</label>
+                            <input type="text" class="form-control" id="idContabilidad" name="idContabilidad" required>
                         </div>
                         <div class="form-group col-4">
                             <label for="estadoActivo">Estado Activo:</label>

@@ -24,23 +24,7 @@ class ActivoController extends Controller
         }
     }
 
-    public function activosByFecha(Request $request){
-        try{
-            $fechaInicio = $request->fechaInicio;
-            $fechaFinal = $request->fechaFinal;
 
-    
-            $activos = Activo::with("producto.modelos.marca", "producto.modelos.categoria", "cliente", "departamento")
-                        ->whereBetween('fechaDeCompra', [$fechaInicio, $fechaFinal])
-                        ->get();
-    
-            // return view("activos.index",compact("activos"));
-            return response()->json(["activos"=> $activos],200); 
-        }
-        catch(\Throwable $th){
-            return response()->json(["error"=> $th->getMessage()],500);               
-        }
-    }
     
 
     public function create(){
@@ -58,7 +42,7 @@ class ActivoController extends Controller
         try{
             $request ->validate([
                 'fechaCompra'=> 'required',
-                'idContabiliad'=> 'required',
+                'idContabilidad'=> 'required',
                 'estadoActivo'=> 'required',
                 'ciudad'=> 'required',
                 'cliente_id'=> 'required',
@@ -67,7 +51,7 @@ class ActivoController extends Controller
             ]);
             $activo = new Activo();
             $activo -> fechaDeCompra = $request-> fechaCompra;
-            $activo-> idContabilidad = $request-> idContabiliad;
+            $activo-> idContabilidad = $request-> idContabilidad;
             $activo-> estadoActivo = $request->estadoActivo;
             $activo-> estado = 1;
             $activo-> cliente_id = $request -> cliente_id;
@@ -82,11 +66,11 @@ class ActivoController extends Controller
     }   
     public function edit($id){
         try{
-            $modelo = Modelo::find($id);
-            $categorias = Categoria::where("estadoCategoria",1)->get();
-            $departamentos = Departamento::where("estadoDepartamento",1)->get();
+            $clientes = Cliente::where("estado",1)->get();
+            $departamentos = Departamento::where("estado",1)->get();
             $productos = Producto::where("estadoProductos",1)->get();
-            return view("modelos.edit",compact("modelo","categorias","departamentos"));
+            $activo = Activo::find($id);
+            return view("activos.edit",compact("clientes","departamentos","productos","activo"));
         }
         catch(\Throwable $th){
             return response()->json(["error"=>$th ->getMessage()],500);
@@ -96,16 +80,24 @@ class ActivoController extends Controller
     public function update(Request $request, $id){
         try{
             $request ->validate([
-                'nombreModelo'=> 'required',
-                'id_marca'=> 'required',
-                'id_categoria'=> 'required',
+                'fechaCompra'=> 'required',
+                'idContabilidad'=> 'required',
+                'estadoActivo'=> 'required',
+                'ciudad'=> 'required',
+                'cliente_id'=> 'required',
+                'departamento_id'=> 'required',
+                'producto_id'=> 'required',
+                'estado'=> 'required',
             ]);
-            $modelo = Modelo::find($id);
-            $modelo -> nombreModelo = $request->nombreModelo;
-            $modelo -> estadoModelo = $request-> estadoModelo;
-            $modelo-> marca_id = $request->id_marca;
-            $modelo-> categoria_id = $request -> id_categoria;
-            $modelo -> save();
+            $activo = Activo::find($id);
+            $activo -> fechaDeCompra = $request->fechaCompra;
+            $activo -> idContabilidad = $request-> idContabilidad;
+            $activo-> estadoActivo = $request->estadoActivo;
+            $activo-> cliente_id = $request -> cliente_id;
+            $activo-> estado = $request -> estado;
+            $activo-> departamento_id = $request -> departamento_id;
+            $activo-> producto_id = $request -> producto_id;
+            $activo -> save();
             return response()->json(['message'=> 'Actualizado correctamente'], 200);
 
         }

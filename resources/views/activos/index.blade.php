@@ -59,8 +59,8 @@
                         <td>{{ $activo->producto->modelos->categoria->nombreCategoria }}</td>
                         <td><img src="{{ 'storage/images/productos/' . $activo->producto-> nombreImagen }}" alt="{{ $activo->producto-> nombreImagen}}" class="img-fluid rounded" style="max-width: 100%; height: auto;""></td>
                         <td style=" text-align: end">
-                            <a href="{{ route('productos.edit', $activo->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-list"></i></button></a>
-                            <a href="{{ route('productos.edit', $activo->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></a>
+                            <a href="{{ route('activos.edit', $activo->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-list"></i></button></a>
+                            <a href="{{ route('activos.edit', $activo->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></a>
                             <button class="btn btn-secondary btn-desactivar" data-id="{{ $activo->id }}"><i class="fas fa-ban" style="color: #ffffff;"></i></button>
                         </td>
                     </tr>

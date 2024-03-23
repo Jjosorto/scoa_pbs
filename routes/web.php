@@ -130,7 +130,6 @@ Route::group(['prefix' => 'activos'], function () {
         Route::get('/edit/{id}', 'edit')->middleware(['auth'])->name('activos.edit');
         Route::post('/store', 'store')->middleware(['auth'])->name('activos.store');
         Route::post('/update/{id}', 'update')->middleware(['auth'])->name('activos.update');
-        Route::get('/getfecha', 'activosByFecha')->middleware(['auth'])->name('activos.byfecha');
         // Route::get('/destoy/{id}', 'destroy')->middleware(['auth'])->name('activos.destroy');
         Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('activos.desactive');
         // Route::get('/import', 'import')->middleware(['auth'])->name('activos.import');
