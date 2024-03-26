@@ -2,96 +2,55 @@
     <div class="row justify-content-center">
 
         <div class="col-md-10 bg-white my-4 py-4 shadow p-3 mb-5 bg-body-tertiary rounded">
-
-            <div class=" row col-12 mb-5">
-
-                <div class="col-2">
-
-                    <a href="{{ route('activos.create') }}">
+            <div class="row">
+                <div class="col-12 mb-5" style="text-align: end">
+                    <a href="{{ route('mantenimiento.create', $activo->id) }}">
                         <button class="btn btn-dark"><i class="fa-regular fa-square-plus" style="color: #ffffff;"></i>
-                            Nuevo Activo
+                            Nuevo Mantenimiento
                         </button>
                     </a>
                 </div>
-                <div class="col-2">
-
-
-                </div>
-
             </div>
-
-            <table id="table" class="display nowrap">
+            <div class="col-12 rounded bg-white p-2 m-1 shadow-sm row">
+                <h3>{{$activo->producto->nombre}}</h3>
+                <div class="col-5">
+                    <p>Fecha de compra: {{$activo->fechaDeCompra}}</p>
+                    <p>Id Contabilidad: {{$activo->idContabilidad}}</p>
+                    <p>Estado Actual: {{$activo->estadoActivo}}</p>
+                    <p>Id Contabilidad: {{$activo->idContabilidad}}</p>
+                </div>
+                <div class="col-5">
+                    <p>Cliente: {{$activo->cliente->nombre}}</p>
+                    <p>Modelo: {{$activo->producto->modelos->nombreModelo}}</p>
+                    <p>Marca: {{$activo->producto->modelos->marca->nombreMarca}}</p>
+                    <p>Categoria: {{$activo->producto->modelos->categoria->nombreCategoria}}</p>
+                </div>
+            </div>
+            <table id="table" class="display">
                 <thead>
                     <tr>
-                        <th>Fecha De Compra</th>
-                        <th>idContabilidad</th>
-                        <th>Estado Activo</th>
-                        <th>estado</th>
-                        <th>Cliente</th>
-                        <th>Departamento</th>
-                        <th>Ciuda</th>
-                        <th>Producto</th>
-                        <th>Modelo</th>
-                        <th>Marca</th>
-                        <th>Categoria</th>
-                        <th>Imagen</th>
-                        <th style="text-align: end">Opciones</th>
+                        <th>Fecha de mantenimiento</th>
+                        <th>Estado</th>
+                        <th>Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($activos as $activo)
+                    @foreach ($activo->mantenimientos as $mantenimiento)
                     <tr>
-                        <td>{{ $activo->fechaDeCompra }}</td>
-                        <td>{{ $activo->idContabilidad }}</td>
-                        <td>{{ $activo->estadoActivo }}</td>
-                        <td>@if($activo->estadoActivo == 0)
-                            Inactivo
-                            @else
-                            Activo
-                            @endif
-                        </td>
-                        <td>{{ $activo->cliente->nombre }}</td>
-                        <td>{{ $activo->departamento->nombreDepartamento }}</td>
-                        <td>{{ $activo->ciudad }}</td>
-                        <td>{{ $activo->producto->nombre }}</td>
-                        <td>{{ $activo->producto->modelos->nombreModelo }}</td>
-                        <td>{{ $activo->producto->modelos->marca->nombreMarca }}</td>
-                        <td>{{ $activo->producto->modelos->categoria->nombreCategoria }}</td>
-                        <td><img src="{{ 'storage/images/productos/' . $activo->producto-> nombreImagen }}" alt="{{ $activo->producto-> nombreImagen}}" class="img-fluid rounded" style="max-width: 100%; height: auto;""></td>
-                        <td style=" text-align: end">
-                            <a href="{{ route('mantenimiento.index', $activo->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-list"></i></button></a>
-                            <a href="{{ route('activos.edit', $activo->id) }}"><button class="btn btn-dark"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></a>
-                            <button class="btn btn-secondary btn-desactivar" data-id="{{ $activo->id }}"><i class="fas fa-ban" style="color: #ffffff;"></i></button>
-                        </td>
+                        <td>{{ $mantenimiento->fecha_registro }}</td>
+                        <td>{{ $mantenimiento->estadoActivo }}</td>
+                        <td>{{ $mantenimiento->descripcion }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-
-
         </div>
     </div>
-
-
     <!-----------Script/---------------->
-
-
-
-
-
-
-
-
-
-
     <script>
         $(document).ready(function() {
 
-
-
-
             new DataTable('#table', {
-                scrollX: true,
                 language: {
                     searchBuilder: {
                         condition: 'comparar',
