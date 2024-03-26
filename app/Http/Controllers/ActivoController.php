@@ -6,6 +6,8 @@ use App\Models\Activo;
 use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Departamento;
+use App\Models\HistoricoActivos;
+use App\Models\Mantenimiento_activo;
 use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Producto;
@@ -116,4 +118,55 @@ class ActivoController extends Controller
             return response()->json(["error"=>$th->getMessage()],500);
         }
     }
+
+    public function indexMantenimiento($id)
+    {
+        try {
+
+            // $historicos = HistoricoActivos::where('activo_id', $id)->get()->groupBy('activo_id');
+            $activo = Activo::with('mantenimientos', 'cliente','producto.modelos.marca', 'producto.modelos.categoria')->find($id);
+
+            return view("mantenimiento.index", compact("activo"));
+            // return response()->json(["error"=> $activo],200); 
+
+        } catch (\Throwable $th) {
+            return response()->json(["error" => $th->getMessage()], 500);
+        }
+    }
+    public function createMantenimiento($id)
+    {
+        try {
+
+            $activo = Activo::with('mantenimientos', 'cliente','producto.modelos')->find($id);
+            return view("mantenimiento.create", compact("activo"));
+            // return response()->json(["error"=> $activo],200); 
+
+        } catch (\Throwable $th) {
+            return response()->json(["error" => $th->getMessage()], 500);
+        }
+    }
+    public function storeMantenimiento($id, Request $request)
+    {
+        try {
+
+            $mantenimiento = new Mantenimiento_activo();
+            $mantenimiento-> fecha_registro = now();
+            $mantenimiento-> descripcion  = $request -> descripcion;
+            $mantenimiento-> estadoActivo  = $request -> estadoActivo;
+            $mantenimiento-> activo_id  = $id;
+            $mantenimiento-> save();
+
+            $activo = Activo::find($id);
+            $activo-> estadoActivo = $request -> estadoActivo;
+            $activo -> save();
+
+
+            // return response()->json(["error"=> $activo],200); 
+
+        } catch (\Throwable $th) {
+            return response()->json(["error" => $th->getMessage()], 500);
+        }
+    }
+
+
 }

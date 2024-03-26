@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('historico_activos', function (Blueprint $table) {
+        Schema::create('mantenimiento_activos', function (Blueprint $table) {
             $table->id();
-            $table->date("fechaRecepcion");
-            $table->date("fechaEntrega");
-            $table->boolean("estado");
+            $table->date('fecha_registro');
+            $table->string('descripcion')->nullable();
+            $table->enum("estadoActivo", ['Disponible', 'Asignado', 'Reparacion', 'Descartado'])->default('Disponible');
             $table->unsignedBigInteger('activo_id');
             $table->foreign(['activo_id'])->references(['id'])->on('activos')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->timestamps();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historico_activos');
+        Schema::dropIfExists('mantenimiento_activos');
     }
 };

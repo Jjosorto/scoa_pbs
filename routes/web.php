@@ -134,6 +134,10 @@ Route::group(['prefix' => 'activos'], function () {
         Route::get('/desactive/{id}', 'desactive')->middleware(['auth'])->name('activos.desactive');
         // Route::get('/import', 'import')->middleware(['auth'])->name('activos.import');
         // Route::post('/import', 'importPost')->middleware(['auth'])->name('activos.import.post');
+
+        Route::get('/historico/{id}', 'indexMantenimiento')->middleware(['auth'])->name('mantenimiento.index');
+        Route::get('/historico/create/{id}', 'createMantenimiento')->middleware(['auth'])->name('mantenimiento.create');
+        Route::post('/historico/store/{id}', 'storeMantenimiento')->middleware(['auth'])->name('mantenimiento.store');
     });
 });
 
