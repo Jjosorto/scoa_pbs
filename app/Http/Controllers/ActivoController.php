@@ -11,6 +11,7 @@ use App\Models\Mantenimiento_activo;
 use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Producto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ActivoController extends Controller
@@ -18,7 +19,8 @@ class ActivoController extends Controller
     public function index(){
         try{
         $activos = Activo::with("producto.modelos.marca", "producto.modelos.categoria", "cliente", "departamento")->get();
-        return view("activos.index",compact("activos"));
+        $now = Carbon::now();
+        return view("activos.index",compact("activos", "now"));
         // return response()->json(["error"=> $activos],200); 
         }
         catch(\Throwable $th){
@@ -50,6 +52,7 @@ class ActivoController extends Controller
                 'cliente_id'=> 'required',
                 'departamento_id'=> 'required',
                 'producto_id'=> 'required',
+                'garantia'=> 'required',
             ]);
             $activo = new Activo();
             $activo -> fechaDeCompra = $request-> fechaCompra;
@@ -60,6 +63,9 @@ class ActivoController extends Controller
             $activo-> departamento_id = $request -> departamento_id;
             $activo-> producto_id = $request -> producto_id;
             $activo-> ciudad = $request -> ciudad;
+            $activo-> garantia = $request -> garantia;
+            $activo-> fecha_inicio_garantia = $request -> fecha_inicio_garantia;
+            $activo-> fecha_final_garantia = $request -> fecha_final_garantia;
             $activo-> save();
             // return response()->json(['message'=> 'creado correctamente'], 200);
         }catch(\Throwable $th){
