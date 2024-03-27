@@ -65,6 +65,26 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-12 row">
+
+                        <div class="form-check form-switch col-4">
+                            <input type="hidden" name="garantia" value="0">
+                            <input class="form-check-input" type="checkbox" id="garantia" name="garantia" value="1" onchange="toggleFechaInputs()">
+                            <label class="form-check-label" for="estadoProductos">
+                                Garantía
+                            </label>
+                        </div>
+
+                        <div class="form-group col-4" id="fechaInicioContainer" style="display:none;">
+                            <label for="fecha_inicio_garantia">fecha de inicio:</label>
+                            <input type="date" class="form-control" id="fecha_inicio_garantia" name="fecha_inicio_garantia" required disabled>
+                        </div>
+
+                        <div class="form-group col-4" id="fechaFinalContainer" style="display:none;">
+                            <label for="fecha_final_garantia">fecha de finalización:</label>
+                            <input type="date" class="form-control" id="fecha_final_garantia" name="fecha_final_garantia" required disabled>
+                        </div>
+                    </div>
 
                     <div class="form-group mt-3">
                         <button type="submit" class="btn btn-dark">Crear</button>
@@ -75,6 +95,25 @@
     </div>
     <!-----------Script/---------------->
     <script>
+        function toggleFechaInputs() {
+            var estadoCheckbox = document.getElementById("garantia");
+            var fechaInicioContainer = document.getElementById("fechaInicioContainer");
+            var fechaFinalContainer = document.getElementById("fechaFinalContainer");
+
+            if (estadoCheckbox.checked) {
+                fechaInicioContainer.style.display = "block";
+                fechaFinalContainer.style.display = "block";
+                document.getElementById("fecha_inicio_garantia").disabled = false;
+                document.getElementById("fecha_final_garantia").disabled = false;
+            } else {
+                fechaInicioContainer.style.display = "none";
+                fechaFinalContainer.style.display = "none";
+                document.getElementById("fecha_inicio_garantia").disabled = true;
+                document.getElementById("fecha_final_garantia").disabled = true;
+            }
+        }
+
+
         $(document).ready(function() {
 
 
@@ -91,6 +130,8 @@
                 const formattedDate = yyyy + '-' + mm + '-' + dd;
 
                 document.getElementById("fechaCompra").value = formattedDate;
+                document.getElementById("fecha_inicio_garantia").value = formattedDate;
+                document.getElementById("fecha_final_garantia").value = formattedDate;
             }
 
             setTodayDate();

@@ -30,6 +30,9 @@
                         <th>Cliente</th>
                         <th>Departamento</th>
                         <th>Ciuda</th>
+                        <th>Estado Garantía</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha finalización</th>
                         <th>Producto</th>
                         <th>Modelo</th>
                         <th>Marca</th>
@@ -53,6 +56,14 @@
                         <td>{{ $activo->cliente->nombre }}</td>
                         <td>{{ $activo->departamento->nombreDepartamento }}</td>
                         <td>{{ $activo->ciudad }}</td>
+                        @if ($now->between($activo->fecha_inicio_garantia, $activo->fecha_final_garantia))
+                        <td class="bg-success bg-gradient">Con garantía</td>
+                        @else
+                        <td class="bg-danger bg-gradient">Sin garantía</td>
+                        @endif
+
+                        <td>{{ $activo->fecha_inicio_garantia ? $activo->fecha_inicio_garantia : 'N/A' }}</td>
+                        <td>{{ $activo->fecha_final_garantia ? $activo->fecha_final_garantia : 'N/A' }}</td>
                         <td>{{ $activo->producto->nombre }}</td>
                         <td>{{ $activo->producto->modelos->nombreModelo }}</td>
                         <td>{{ $activo->producto->modelos->marca->nombreMarca }}</td>
