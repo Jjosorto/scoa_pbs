@@ -105,6 +105,9 @@ class ActivoController extends Controller
             $activo-> estado = $request -> estado;
             $activo-> departamento_id = $request -> departamento_id;
             $activo-> producto_id = $request -> producto_id;
+            $activo-> garantia = $request -> garantia;
+            $activo-> fecha_inicio_garantia = $request -> fecha_inicio_garantia;
+            $activo-> fecha_final_garantia = $request -> fecha_final_garantia;
             $activo -> save();
             return response()->json(['message'=> 'Actualizado correctamente'], 200);
 

@@ -1,12 +1,8 @@
 <x-app-layout>
     <div class="row justify-content-center">
-
         <div class="col-md-10 bg-white my-4 py-4 shadow p-3 mb-5 bg-body-tertiary rounded">
-
             <div class=" row col-12 mb-5">
-
                 <div class="col-2">
-
                     <a href="{{ route('activos.create') }}">
                         <button class="btn btn-dark"><i class="fa-regular fa-square-plus" style="color: #ffffff;"></i>
                             Nuevo Activo
@@ -14,23 +10,19 @@
                     </a>
                 </div>
                 <div class="col-2">
-
-
                 </div>
-
             </div>
-
             <table id="table" class="display nowrap">
                 <thead>
                     <tr>
-                        <th>Fecha De Compra</th>
-                        <th>idContabilidad</th>
+                        <th>Fecha de compra</th>
+                        <th>Codigo de Contabilidad</th>
                         <th>Estado Activo</th>
-                        <th>estado</th>
+                        <th>Estado</th>
                         <th>Cliente</th>
                         <th>Departamento</th>
-                        <th>Ciuda</th>
-                        <th>Estado Garantía</th>
+                        <th>Ciudad</th>
+                        <th>Estado de Garantía</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha finalización</th>
                         <th>Producto</th>
@@ -57,9 +49,9 @@
                         <td>{{ $activo->departamento->nombreDepartamento }}</td>
                         <td>{{ $activo->ciudad }}</td>
                         @if ($now->between($activo->fecha_inicio_garantia, $activo->fecha_final_garantia))
-                        <td class="bg-success bg-gradient">Con garantía</td>
+                        <td style="background-color:#5BF97D;">Con garantía</td>
                         @else
-                        <td class="bg-danger bg-gradient">Sin garantía</td>
+                        <td style="background-color:#FF8686">Sin garantía</td>
                         @endif
 
                         <td>{{ $activo->fecha_inicio_garantia ? $activo->fecha_inicio_garantia : 'N/A' }}</td>
@@ -78,29 +70,11 @@
                     @endforeach
                 </tbody>
             </table>
-
-
         </div>
     </div>
-
-
     <!-----------Script/---------------->
-
-
-
-
-
-
-
-
-
-
     <script>
         $(document).ready(function() {
-
-
-
-
             new DataTable('#table', {
                 scrollX: true,
                 language: {
