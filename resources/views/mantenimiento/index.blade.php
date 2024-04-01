@@ -17,7 +17,7 @@
                     <p>Fecha de compra: {{$activo->fechaDeCompra}}</p>
                     <p>Id Contabilidad: {{$activo->idContabilidad}}</p>
                     <p>Estado Actual: {{$activo->estadoActivo}}</p>
-                    <p>Id Contabilidad: {{$activo->idContabilidad}}</p>
+                    <p>Departamento: {{$activo->Departamento->nombreDepartamento}}
                 </div>
                 <div class="col-5">
                     <p>Cliente: {{$activo->cliente->nombre}}</p>
