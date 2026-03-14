@@ -42,7 +42,7 @@ class DashboardController extends Controller
 
         $topDepartamentos = (clone $activosActivos)
             ->select('departamento_id', DB::raw('COUNT(*) as total'))
-            ->with('departamento:id,nombre')
+            ->with('departamento:id,nombreDepartamento')
             ->groupBy('departamento_id')
             ->orderByDesc('total')
             ->take(5)

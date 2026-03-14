@@ -70,7 +70,7 @@
                     <ul class="space-y-3">
                         @forelse ($topDepartamentos as $departamento)
                             <li class="flex items-center justify-between border-b pb-2">
-                                <span class="text-gray-600">{{ $departamento->departamento?->nombre ?? 'Sin departamento' }}</span>
+                                <span class="text-gray-600">{{ $departamento->departamento?->nombreDepartamento ?? 'Sin departamento' }}</span>
                                 <span class="font-semibold text-gray-900">{{ $departamento->total }}</span>
                             </li>
                         @empty
