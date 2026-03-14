@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivoController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\DepartamentosController;
 use App\Http\Controllers\MarcasController;
@@ -25,9 +26,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
